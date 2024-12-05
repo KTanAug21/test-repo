@@ -20,10 +20,14 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('signed-verify', function () {
-    return redirect(URL::temporarySignedRoute('signed-route', now()->addMinutes(5), ['user' => 1], false));
+    $url = URL::temporarySignedRoute('signed-route', now()->addMinutes(5), ['user' => 1], false);
+    \Log::info( $url );
+    return redirect($url);
 });
 
 Route::get('signed-route/{user}', function (Request $request) {
+    \Log::debug('Request URL: ', ['url' => $request->fullUrl()]);
+    \Log::debug('Request parameters: ', ['params' => $request->all()]);
     if (! URL::hasValidSignature($request, absolute: false)) {
         abort(401);
     }
@@ -35,14 +39,14 @@ Route::get('signed-route/{user}', function (Request $request) {
 //Route::get('create-server', [\App\Http\Controllers\TestController::class, 'createServer']);
 
 Route::get('signed-absolute', function () { 
-    return redirect(URL::temporarySignedRoute(
-        'verify-absolute', 
-        now()->addMinutes(5), 
-        ['user' => 1]
-    ));
+    $url = URL::temporarySignedRoute('verify-absolute', now()->addMinutes(5), ['user' => 1]);
+    \Log::info( $url );
+    return redirect($url);
 })->name('signed-absolute');
 
 Route::get('verify-absolute/{user}', function (Request $request) { 
+    \Log::debug('Request URL: ', ['url' => $request->fullUrl()]);
+    \Log::debug('Request parameters: ', ['params' => $request->all()]);
     if (! URL::hasValidSignature(request: $request)) { 
         abort(401); 
     } 
