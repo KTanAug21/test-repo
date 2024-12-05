@@ -31,4 +31,22 @@ Route::get('signed-route/{user}', function (Request $request) {
     return response('Valid Signature');
 })->name('signed-route');
 
+
+//Route::get('create-server', [\App\Http\Controllers\TestController::class, 'createServer']);
+
+Route::get('signed-absolute', function () { 
+    return redirect(URL::temporarySignedRoute(
+        'verify-absolute', 
+        now()->addMinutes(5), 
+        ['user' => 1]
+    ));
+})->name('signed-absolute');
+
+Route::get('verify-absolute/{user}', function (Request $request) { 
+    if (! URL::hasValidSignature(request: $request)) { 
+        abort(401); 
+    } 
+    return response('Valid Signature From Absolute URL');
+})->name('verify-absolute');
+
 require __DIR__.'/auth.php';
