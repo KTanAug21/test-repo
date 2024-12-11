@@ -53,4 +53,8 @@ Route::get('verify-absolute/{user}', function (Request $request) {
     return response('Valid Signature From Absolute URL');
 })->name('verify-absolute');
 
+Route::get('test-kath-test-okay',function(){
+    dd(phpinfo());
+});
+
 require __DIR__.'/auth.php';
