@@ -63,7 +63,7 @@ Route::get('test-flush',function(){
 
     Cache::tags(['test'])->flush(); // will return true but the cache has not been flushed.
     
-    Cache::tags(['test'])->get('test'); // will return 'test'
+    dd( Cache::tags(['test'])->get('test') ); // will return 'test'
 });
 
 require __DIR__.'/auth.php';
