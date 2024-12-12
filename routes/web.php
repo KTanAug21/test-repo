@@ -57,4 +57,13 @@ Route::get('test-kath-test-okay',function(){
     dd(phpinfo());
 });
 
+
+Route::get('test-flush',function(){
+    Cache::tags(['test'])->put('test', 'test', 300);
+
+    Cache::tags(['test'])->flush(); // will return true but the cache has not been flushed.
+    
+    Cache::tags(['test'])->get('test'); // will return 'test'
+});
+
 require __DIR__.'/auth.php';
