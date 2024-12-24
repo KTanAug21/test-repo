@@ -61,6 +61,7 @@ Route::get('test-kath-test-okay',function(){
 
 
 Route::get('/dispatch-job', function () {
+    \Log::info('dispatching job');
     // Dispatch the job to the queue
     MyCustomJob::dispatch();
 
