@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Jobs\MyCustomJob;
 
 Route::get('/', function () {
     return view('welcome');
@@ -58,13 +59,25 @@ Route::get('test-kath-test-okay',function(){
 });
 
 
+
+Route::get('/dispatch-job', function () {
+    // Dispatch the job to the queue
+    MyCustomJob::dispatch();
+
+    return 'Job has been dispatched!';
+});
+
+
+
 Route::get('test-flush',function(){
     Cache::tags(['test'])->put('test', 'test', 300);
-    $cache=   Cache::tags(['test'])->get('test');
+    $cache = Cache::tags(['test'])->get('test');
     Log::info( $cache );
+
     Cache::tags(['test'])->flush(); 
     $cacheNow = Cache::tags(['test'])->get('test');
     Log::info( $cacheNow );
+    
     dd( $cache, $cacheNow ); 
 });
 
