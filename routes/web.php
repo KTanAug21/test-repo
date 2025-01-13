@@ -58,6 +58,8 @@ Route::get('test-kath-test-okay',function(){
     dd(phpinfo());
 });
 
+Route::get('create-mili',[\App\Http\Controllers\TestController::class, 'createServer']);
+
 
 
 Route::get('/dispatch-job', function () {
