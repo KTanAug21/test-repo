@@ -71,6 +71,15 @@ Route::get('/dispatch-job', function () {
 });
 
 
+Route::get('/api/test', function () {
+    dd('ok');
+});
+Route::get('/api/first/third', function () {
+    dd('ok');
+});
+Route::get('/api/firstsecond', function () {
+    dd('ok');
+});
 
 Route::get('test-flush',function(){
     Cache::tags(['test'])->put('test', 'test', 300);
