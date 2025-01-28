@@ -24,13 +24,18 @@ class MyCustomJob implements ShouldQueue
      */
     public function handle(): void
     {
-        Log::info('my job here');
-        //sleep(300);  // Wait for 300 seconds (5 minutes)
-        defer(function() {
+        Log::info('my job testhere');
+        try{
+            //sleep(300);  // Wait for 300 seconds (5 minutes)
+            \Illuminate\Support\Facades\Concurrency::defer(function() {
+            
+                Log::info('Hello world!');
+            });
+        }catch(\Exception $e){
+            Log::info(json_encode($e));
+            Log::info($e->getMessage());
+        }
         
-            Log::info('Hello world!');
-        });
-    
         Log::info('completed job');
 
     }

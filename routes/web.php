@@ -37,6 +37,15 @@ Route::get('signed-route/{user}', function (Request $request) {
 })->name('signed-route');
 
 
+Route::post('/process', function () {
+    defer(function () {
+        // Task to run after the response
+        logger('Deferred task executed.');
+    });
+
+    return 'ok';
+});
+
 //Route::get('create-server', [\App\Http\Controllers\TestController::class, 'createServer']);
 
 Route::get('signed-absolute', function () { 
