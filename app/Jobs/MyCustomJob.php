@@ -27,7 +27,7 @@ class MyCustomJob implements ShouldQueue
         Log::info('my job here');
         //sleep(300);  // Wait for 300 seconds (5 minutes)
         defer(function() {
-            sleep(2);
+        
             Log::info('Hello world!');
         });
     
