@@ -20,8 +20,7 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
-    
-
+        'public/js/*' => ['kathryn.com'],
     ],
 
     'allowed_origins_patterns' => [],
