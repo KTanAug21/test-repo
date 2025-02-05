@@ -22,7 +22,7 @@ return [
     'allowed_origins' => [
         'assets/*' => ['*'], // Restrict assets to a specific domain
       
-        'public/js/*' => ['*'],
+        'resources/js/*' => ['*'],
     ],
 
     'allowed_origins_patterns' => [],
