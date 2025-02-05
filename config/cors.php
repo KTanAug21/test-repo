@@ -20,9 +20,8 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
-        'assets/*' => ['*'], // Restrict assets to a specific domain
-      
-        'public/js/*' => ['*'],
+    
+
     ],
 
     'allowed_origins_patterns' => [],
