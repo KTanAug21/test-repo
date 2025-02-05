@@ -13,6 +13,11 @@ Route::get('test-cors',function(){
     return view('test-cors');
 });
 
+Route::get('nope-cors',function(){
+    return view('test-okay');
+});
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
