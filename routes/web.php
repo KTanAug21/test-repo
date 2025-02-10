@@ -18,6 +18,28 @@ Route::get('nope-cors',function(){
 });
 
 
+
+Route::get('/check-node-version', function () {
+    // Execute the command to get the Node.js version
+    $nodeVersion = exec('node -v');
+    
+    // Return the Node.js version as a response
+    dd( $nodeVersion);
+});
+
+Route::get('apicheck',function(){
+    $forgeApiUrl = "https:://forge.laravel.com/api/v1/servers/882412/sites/2604314/deployment/deploy";
+    $forgeApiHeaders = [
+      'Authorization' =>  'Bearer ' . env('API_TOKEN'),
+      'Accept' =>  'application/json',
+      'Content-Type' =>  'application/json',
+    ];
+    $projectDeploy = Http::withHeaders($forgeApiHeaders)
+    ->post($forgeApiUrl);
+    dd( $projectDeploy);
+});
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
