@@ -38,4 +38,32 @@ class TestController extends Controller
         }
 
     }
+    function createWorker(){
+        
+        try{
+            $token=env('TOKEN_');
+            $payload = [
+                'connection' => 'database',
+                'timeout' => 0,
+                'sleep' => 60,
+                'tries' => null,
+                'processes' => 1,
+                'stopwaitsecs' => 10,
+                'daemon' => true,
+                'force' => false,
+                'php_version' => 'php83',
+                'queue' => 'default',
+                'directory'=>'/home/forge/test-kath.bot.nu/sample'
+                ]; 
+
+            $forge = new Forge($token);
+            $worker = $forge->createWorker(882412,2604314,$payload,true);
+            dd( $worker );
+        }catch(\Exception $e){
+            Log::info( $e->getMessage() );
+            report( $e );
+            dd( $e );
+        }
+
+    }
 }
