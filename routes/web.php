@@ -101,6 +101,34 @@ Route::get('test-kath-test-okay',function(){
 Route::get('create-mili',[\App\Http\Controllers\TestController::class, 'createServer']);
 
 
+use Illuminate\Support\Facades\Storage;
+
+Route::get('/upload-text', function () {
+      // The string to be written into the text file
+      $content = "This is the content of the text file.";
+
+      // Define the file name (you can dynamically generate it as needed)
+      $fileName = 'example.txt';
+  
+      // Upload the file to the S3 disk (or the default disk configured in your filesystems.php)
+      Storage::disk('s3')->put($fileName, $content);
+});
+
+
+Route::get('/get-text', function () {
+
+    // The file name you want to retrieve
+    $fileName = 'example.txt';
+
+    // Retrieve the file content from S3 (or local storage if that's your disk)
+    $content = Storage::disk('s3')->get($fileName);
+
+    // Return or use the file content
+    return response($content, 200)->header('Content-Type', 'text/plain');
+});
+
+
+
 
 Route::get('/dispatch-job', function () {
     \Log::info('dispatching job');
