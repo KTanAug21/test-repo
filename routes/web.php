@@ -141,8 +141,9 @@ Route::get('/dispatch-job', function () {
 Route::get('/get-image',function(){
 
     // check path
-    if( Storage::disk('s3')->exists('laravel.png')){
-        $path=Storage::disk('s3')->temporaryUrl('laravel.png', now()->addMinutes(15));
+    if( Storage::exists('laravel.png')){
+        $path=Storage::temporaryUrl('laravel.png', now()->addMinutes(15));
+        dd($path);
         return "<html>
     <body>
     Hello
