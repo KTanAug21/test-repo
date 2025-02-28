@@ -142,6 +142,10 @@ Route::get('env-var',function(){
     dd( env('MY_VARIABLE') );
 });
 
+Route::get('env-var-a',function(){
+    dd( env('MY_VARIABLE_A') );
+});
+
 Route::get('/get-image',function(){
 
     // check path
