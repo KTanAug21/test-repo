@@ -143,7 +143,7 @@ Route::get('env-var',function(){
 });
 
 Route::get('env-var-a',function(){
-    dd( env('MY_VARIABLE_A') );
+    dd( env('MY_VARIABLE_A') ); //
 });
 
 Route::get('/get-image',function(){
