@@ -138,6 +138,10 @@ Route::get('/dispatch-job', function () {
     return 'Job has been dispatched!';
 });
 
+Route::get('env-var',function(){
+    dd( env('MY_VARIABLE') );
+});
+
 Route::get('/get-image',function(){
 
     // check path
