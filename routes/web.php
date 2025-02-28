@@ -142,12 +142,11 @@ Route::get('/get-image',function(){
 
     // check path
     if( Storage::disk('s3')->exists('laravel.png')){
-        $path=Storage::disk('s3')->temporaryUrl('laravel.png', now()->addMinutes(5));
-      
+        $path=Storage::disk('s3')->temporaryUrl('laravel.png', now()->addMinutes(15));
         return "<html>
     <body>
     Hello
-    <img src='https://fls-9e4ba251-9a4c-49bb-9699-a42b347b8660.367be3a2035528943240074d0096e0cd.r2.cloudflarestorage.com/laravel.png?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=5784425a0271330ded3475b45f53575e%2F20250228%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250228T095737Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Signature=09c96c6a23dba5aeae2761dfff2542579b463226a224705d0fc2b659bd6f7e71' />
+    <img src='https://fls-9e4ba251-9a4c-49bb-9699-a42b347b8660.367be3a2035528943240074d0096e0cd.r2.cloudflarestorage.com/laravel.png?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=5784425a0271330ded3475b45f53575e%2F20250228%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250228T100811Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Signature=633a86c10f52283b940c13a39a2c6c8d469e0b8d1e44c2bbf902258a651e91ec' />
     </body>
     </html>";
     }else{
