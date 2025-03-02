@@ -11,6 +11,7 @@
         "laravel/framework": "^11.31",
         "laravel/octane": "^2.6",
         "laravel/tinker": "^2.9",
+        "laravel/vapor-core": "^2.37",
         "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/flux": "^1.1",
         "spiral/roadrunner-cli": "^2.6.0",
