@@ -140,9 +140,9 @@ Route::get('/dispatch-job', function () {
 
 
 
-Route::middleware(['xframe'])->get('/getxframe-path', function () {
+Route::get('/getxframe-path', function () {
     return 'ok';
-});
+})->middleware([\App\Http\Middleware\XFrameOptions::class]);
 
 Route::get('/no-frame-path', function () {
     return 'nice';
