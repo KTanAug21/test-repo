@@ -138,12 +138,14 @@ Route::get('/dispatch-job', function () {
     return 'Job has been dispatched!';
 });
 
-Route::get('env-var',function(){
-    dd( env('MY_VARIABLE') );
+
+
+Route::middleware(['xframe'])->get('/getxframe-path', function () {
+    return 'ok';
 });
 
-Route::get('env-var-a',function(){
-    dd( env('MY_VARIABLE_A') ); //
+Route::get('/no-frame-path', function () {
+    return 'nice';
 });
 
 Route::get('/get-image',function(){
