@@ -5,8 +5,15 @@
     "description": "The skeleton application for the Laravel framework.",
     "keywords": ["laravel", "framework"],
     "license": "MIT",
+    "repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/laravel/spark-paddle"
+    }
+],
     "require": {
         "php": "^8.2",
+         "laravel/spark-paddle": "^5.0",
         "inertiajs/inertia-laravel": "^2.0",
         "laravel/forge-sdk": "^3.19",
         "laravel/framework": "^11.31",
