@@ -4,6 +4,9 @@ use Inertia\Inertia;
 use App\Jobs\MyCustomJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -122,7 +125,6 @@ Route::get('test-kath-test-okay',function(){
 Route::get('create-mili',[\App\Http\Controllers\TestController::class, 'createServer']);
 
 
-use Illuminate\Support\Facades\Route;
 
 Route::get('/upload-text', function () {
       // The string to be written into the text file
@@ -183,9 +185,7 @@ Route::get('/get-image',function(){
     }
     
 });
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Storage;
-use App\Http\Controllers\ProfileController;
+
 
 Route::get('get-redis',function(){
     $redis = Redis::connection();
