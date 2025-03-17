@@ -20,7 +20,8 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
-       'htttps://kathryn.com',
+       'https://kathryn.com',
+       'https://www.google.com'
     ],
 
     'allowed_origins_patterns' => [],
