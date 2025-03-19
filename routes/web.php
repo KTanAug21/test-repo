@@ -222,6 +222,10 @@ Route::get('test-multi-cache',function(){
     // Use the second Redis connection (redis2)
     Log::info('second cache');
     Cache::store('redis2')->put('key', 'value', 60);
+
+    $var = Cache::store('redis2')->get('key');
+    dd( $var );
+    return 'test';
     
 });
 
