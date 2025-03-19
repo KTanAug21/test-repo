@@ -210,14 +210,19 @@ Route::get('test-flush',function(){
 });
 
 Route::get('test-multi-cache',function(){
-   
+
+    Log::info('default cache');
     // Use the first Redis connection (redis1)
-    Cache::store('redis1')->put('key', 'value', 600);
+    Cache::store('redis')->put('key', 'value_', 60);
+   
+    Log::info('first cache');
+    // Use the first Redis connection (redis1)
+    Cache::store('redis1')->put('key', 'value', 60);
 
     // Use the second Redis connection (redis2)
-    Cache::store('redis2')->put('key', 'value', 600);
+    Log::info('second cache');
+    Cache::store('redis2')->put('key', 'value', 60);
     
-    dd( $cache, $cacheNow ); 
 });
 
 
