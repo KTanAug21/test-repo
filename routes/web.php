@@ -140,7 +140,7 @@ Route::get('/upload-text', function () {
 
 Route::get('/get-text', function () {
 
-    // The file name you want to retrieve
+    // The file name you want to retrie ve
     $fileName = 'example.txt';
 
     // Retrieve the file content from S3 (or local storage if that's your disk)
