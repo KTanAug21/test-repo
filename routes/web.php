@@ -211,23 +211,34 @@ Route::get('test-flush',function(){
 
 Route::get('test-multi-cache',function(){
 
-    Log::info('default cache');
-    // Use the first Redis connection (redis1)
-    Cache::store('redis')->put('key', 'value_', 60);
-   
+    echo "first cache...<br>";
     Log::info('first cache');
-    // Use the first Redis connection (redis1)
-    Cache::store('redis1')->put('key', 'value', 60);
-
-    // Use the second Redis connection (redis2)
+    Cache::store('redis1')->put('key', 'value1', 60);
+    $firstCache = Cache::store('redis2')->get('key');
+    echo "first cache is $firstCache";
+    
+    echo "second cache done...<br>";
     Log::info('second cache');
-    Cache::store('redis2')->put('key', 'value', 60);
+    $secondCache = Cache::store('redis2')->put('key', 'value2', 60);
+    echo "second cache is $secondCache";
 
-    $var = Cache::store('redis2')->get('key');
-    dd( $var );
-    return 'test';
+    return 'done';
     
 });
 
+Route::get('test-clear-cache',function(){
+
+    echo "clearing cache 2 but keeping 1 <br>";
+    Cache::store('redis2')->flush();
+
+
+    $firstCache = Cache::store('redis1')->get('key');
+    echo "first cache is \"$firstCache\" <br>";
+
+    $secondCache = Cache::store('redis2')->get('key');
+    echo "second cache is \"$secondCache\"";
+    return 'test';
+    
+});
 
 require __DIR__.'/auth.php';
