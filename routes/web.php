@@ -209,5 +209,16 @@ Route::get('test-flush',function(){
     dd( $cache, $cacheNow ); 
 });
 
+Route::get('test-multi-cache',function(){
+   
+    // Use the first Redis connection (redis1)
+    Cache::store('redis1')->put('key', 'value', 600);
+
+    // Use the second Redis connection (redis2)
+    Cache::store('redis2')->put('key', 'value', 600);
+    
+    dd( $cache, $cacheNow ); 
+});
+
 
 require __DIR__.'/auth.php';

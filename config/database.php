@@ -168,6 +168,20 @@ return [
             'database' => env('REDIS_CACHE_DB', '1'),
         ],
 
+        'redis1' => [
+            'host' => env('REDIS_1_HOST', '127.0.0.1'),
+            'port' => env('REDIS_1_PORT', 6379),
+            'password' => env('REDIS_1_PASSWORD', null),
+            'database' => env('REDIS_1_DATABASE', 0),
+        ],
+    
+        'redis2' => [
+            'host' => env('REDIS_2_HOST', '127.0.0.1'),
+            'port' => env('REDIS_2_PORT', 6380),
+            'password' => env('REDIS_2_PASSWORD', null),
+            'database' => env('REDIS_2_DATABASE', 1),
+        ],
+
     ],
 
 ];
