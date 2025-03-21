@@ -121,6 +121,7 @@ Route::get('verify-absolute/{user}', function (Request $request) {
 Route::get('test-kath-test-okay',function(){
     dd(phpinfo());
 });
+//okay
 
 Route::get('create-mili',[\App\Http\Controllers\TestController::class, 'createServer']);
 
