@@ -124,7 +124,10 @@ Route::get('test-kath-test-okay',function(){
 
 Route::get('create-mili',[\App\Http\Controllers\TestController::class, 'createServer']);
 
+Route::get('testfunc',function(){
 
+    return "<img src=\"https://fls-9e51efda-c75b-42cf-9978-174c4e758e9f.laravel.cloud/Screenshot%202024-10-28%20173253.png\" alt=\"Screenshot\">";
+});
 
 Route::get('/upload-text', function () {
       // The string to be written into the text file
