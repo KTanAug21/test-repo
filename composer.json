@@ -17,6 +17,7 @@
         "laravel/forge-sdk": "^3.19",
         "laravel/framework": "^11.31",
         "laravel/octane": "^2.6",
+        "laravel/pulse": "^1.4",
         "laravel/reverb": "^1.0",
         "laravel/sanctum": "^4.0",
         "laravel/spark-paddle": "^5.0",
