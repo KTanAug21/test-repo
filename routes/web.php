@@ -245,4 +245,37 @@ Route::get('test-clear-cache',function(){
     
 });
 
+use Illuminate\Support\Facades\Crypt;
+
+Route::get('/test-key-rotation', function () {
+    // Original data to encrypt
+    $originalData = 'This is some secret data';
+
+    // Encrypt the data using the current APP_KEY
+    $encryptedData = Crypt::encryptString($originalData);
+    
+    dd( $encryptedData );
+    // Log the encrypted data for reference
+    Log::info('Encrypted Data: ' . $encryptedData);
+    
+    // Now try decrypting the data with the current APP_KEY (this will succeed)
+    try {
+        $decryptedData = Crypt::decryptString($encryptedData);
+    } catch (\Exception $e) {
+        $decryptedData = 'Failed to decrypt with current key';
+    }
+});
+
+Route::get('/decrypt', function ($test) {
+   
+    
+    // Now try decrypting the data with the current APP_KEY (this will succeed)
+    try {
+        $decryptedData = Crypt::decryptString($test);
+        dd( $decryptedData );
+    } catch (\Exception $e) {
+        $decryptedData = 'Failed to decrypt with current key';
+    }
+});
+
 require __DIR__.'/auth.php';
