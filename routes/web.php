@@ -266,7 +266,7 @@ Route::get('/test-key-rotation', function () {
     }
 });
 
-Route::get('/decrypt', function ($test) {
+Route::get('/decrypt/{test}', function ($test) {
    
     
     // Now try decrypting the data with the current APP_KEY (this will succeed)
