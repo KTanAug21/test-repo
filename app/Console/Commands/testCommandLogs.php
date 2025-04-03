@@ -43,8 +43,10 @@ class testCommandLogs extends Command
     
         $output = $showProcess->getOutput();
         Log::info('from within command');
-        Log::error($output);
+      
         Log::info($output);
+        Log::info('getting error');
+        throw new ProcessFailedException($output);
         dd($output );
 
     }
