@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Process\Process;
+use Log;
 
 class testCommandLogs extends Command
 {
@@ -41,6 +42,8 @@ class testCommandLogs extends Command
         $showProcess->mustRun();
     
         $output = $showProcess->getOutput();
+        Log::info('from within command');
+        Log::info($output);
         dd($output );
 
     }
