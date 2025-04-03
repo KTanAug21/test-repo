@@ -30,7 +30,8 @@ class testCommandLogs extends Command
      */
     public function handle()
     {
-       
+    
+        ob_implicit_flush(true);
         $showProcess = new Process([
 
           

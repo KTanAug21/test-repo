@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # Run the first command 'composer show foobar' and capture the output
 debug_version_broken=$( composer foobar 2>&1 )
 
