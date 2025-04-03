@@ -65,11 +65,12 @@ class testCommandLogs extends Command
 
         // Get the output from the script (which will be in JSON format)
         $output = $process->getOutput();
-
+      
+        $errorOutput = $process->getErrorOutput();
         // Optionally decode the JSON if you want to manipulate it in PHP
-        $outputData = json_decode($output, true);
-        Log::info( $outputData );
-
-        dd( $outputData );
+       
+        Log::info( $output );
+        Log::info( $errorOutput ) ;
+       
     }
 }
