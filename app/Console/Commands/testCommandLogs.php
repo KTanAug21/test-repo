@@ -51,6 +51,8 @@ class testCommandLogs extends Command
         Log::info('checking other command');
        
         $scriptPath = '/var/www/html/app/Console/Commands/debug_composer.sh';
+        #$scriptPath = '/home/admin_kath/development/php/test-repo/app/Console/Commands/debug_composer.sh';
+        
         $process = new Process([
 
           $scriptPath
