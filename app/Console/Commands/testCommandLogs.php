@@ -48,9 +48,28 @@ class testCommandLogs extends Command
         Log::info('from within command');
       
         Log::info($output);
-        Log::info('getting error');
-        throw new ProcessFailedException($output);
-        dd($output );
+        Log::info('checking other command');
+       
+        $scriptPath = '/var/www/html/app/Console/Commands/debug_composer.sh';
+        $process = new Process([
 
+          $scriptPath
+    
+        ]);
+        $process->run();
+
+        // Check if the process was successful
+        if (!$process->isSuccessful()) {
+            throw new ProcessFailedException($process);
+        }
+
+        // Get the output from the script (which will be in JSON format)
+        $output = $process->getOutput();
+
+        // Optionally decode the JSON if you want to manipulate it in PHP
+        $outputData = json_decode($output, true);
+        Log::info( $outputData );
+
+        dd( $outputData );
     }
 }
