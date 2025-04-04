@@ -280,6 +280,7 @@ Route::get('/decrypt/{test}', function ($test) {
 
 
 Route::get('/test-my-route', function () {
+    header_remove('X-Robots-Tag');
     return response('Your response text')
         ->header('Access-Control-Allow-Origin', '*')
         ->header('Access-Control-Allow-Methods', 'POST, OPTIONS')
