@@ -278,4 +278,12 @@ Route::get('/decrypt/{test}', function ($test) {
     }
 });
 
+
+Route::get('/test-my-route', function () {
+    return response('Your response text')
+        ->header('Access-Control-Allow-Origin', '*')
+        ->header('Access-Control-Allow-Methods', 'POST, OPTIONS')
+        ->header('Access-Control-Allow-Headers', 'Content-Type, X-API-Key');
+});
+
 require __DIR__.'/auth.php';
