@@ -14,14 +14,9 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
     useEffect(() => {
         // Make sure Echo is listening for events
-        const echo = new Echo({
-            broadcaster: 'pusher',
-            key:  process.env.REVERB_APP_KEY,
-            forceTLS: true,
-        });
 
         // Listen for the PackageSent event on the 'delivery' channel
-        echo.channel('delivery')
+        window.Echo.channel('delivery')
             .listen('PackageSent', (event) => {
                 console.log('Package Sent Event:', event);
                 // Handle the event here
@@ -29,7 +24,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
         // Cleanup when the component is unmounted
         return () => {
-            echo.leaveChannel('delivery');
+            window.Echo.leaveChannel('delivery');
         };
     }, []);
 
