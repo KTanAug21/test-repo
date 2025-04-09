@@ -12,6 +12,28 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
         document.getElementById('background')?.classList.add('!hidden');
     };
 
+    useEffect(() => {
+        // Make sure Echo is listening for events
+        const echo = new Echo({
+            broadcaster: 'pusher',
+            key:  process.env.REVERB_APP_KEY,
+            forceTLS: true,
+        });
+
+        // Listen for the PackageSent event on the 'delivery' channel
+        echo.channel('delivery')
+            .listen('PackageSent', (event) => {
+                console.log('Package Sent Event:', event);
+                // Handle the event here
+            });
+
+        // Cleanup when the component is unmounted
+        return () => {
+            echo.leaveChannel('delivery');
+        };
+    }, []);
+
+
     return (
         <>
             <Head title="Welcome" />
