@@ -6,10 +6,10 @@
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "repositories": [
-    {
-        "type": "vcs",
-        "url": "https://github.com/laravel/spark-paddle"
-    }
+        {
+            "type": "composer",
+            "url": "https://spark.laravel.com"
+        }
    
 ],
     "require": {
